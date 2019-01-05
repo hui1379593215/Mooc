@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>todolist组件拆分</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+        <div id="app">
+                <input v-model="inputValue">
+                <button @click="btnSubmit">提交</button>
+                <ul>
+                        <todo-item v-for="
+                        (item, index) in list" 
+                        :key="index"
+                        :content="item"></todo-item>
+                </ul>
+        </div>
+        <script>
+            Vue.component('todo-item', {
+                props: ['content'],
+                template:'<li>{{content}}</li>'
+            })
+            // var Todoitem={
+            //     props: ['content'],
+            //     template:'<li>{{content}}</li>'
+            // }
+
+            new Vue({
+            el:'#app',
+            components: {
+                'todo-item':Todoitem
+            },
+            data:{
+                inputValue:'hello',
+                list:[]
+            },
+            methods: {
+                btnSubmit:function(){
+                    this.list.push(this.inputValue)
+                    this.inputValue=" "
+                }
+            },
+        })
+        </script>
+</body>
+</html>

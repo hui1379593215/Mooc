@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+        <!-- 2-6 v-if, v-show与v-for指令 -->
+        <div id="app">
+            <div v-show="show">hello world</div>
+            <button @click="handClick">taggo</button>
+            <ul>
+                <li v-for="(item,index) in list" :key="index">{{item}}</li>
+            </ul>
+        </div>
+        <script>
+            new Vue({
+                el:'#app',
+                data:{
+                    show:true,
+                    list:[1,2,3]
+                },
+                methods: {
+                    handClick:function(){
+                        this.show=!this.show
+                    }
+                }
+
+            })
+        </script>
+</body>
+</html>
